@@ -1,27 +1,19 @@
-import {AnchorHTMLAttributes, ButtonHTMLAttributes} from 'react';
+import {ReactNode} from 'react';
 import * as S from './styles';
-
-import { api } from '../../services/api';
-
-type ButtonTypes =
-    AnchorHTMLAttributes<HTMLAnchorElement> |
-    ButtonHTMLAttributes<HTMLButtonElement>
 
 export type ButtonProps = {
     color?: string;
-} & ButtonTypes;
+    children?: ReactNode;
+    type: 'button' | 'submit' | 'reset';
+    onClick?: () => void;
+};
 
-const ButtonSearch = async ({children, color}: ButtonProps) => {
-
-    const stock = await api.get(`/dictionaries`);
-
-    const handleClick = () => {
-        console.log('stock', stock);
-    }
+const ButtonSearch = ({children, color, type, onClick}: ButtonProps) => {
 
     return (
         <S.Button
-            onClick={() => handleClick()}
+            type={type}
+            onClick={onClick}
             color={color}
         >
             {children}

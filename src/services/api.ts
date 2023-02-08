@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: 'https://api.collinsdictionary.com/api/v1'
+    baseURL: 'https://api.dictionaryapi.dev/api/v2/entries/en'
   });
