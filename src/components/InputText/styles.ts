@@ -12,11 +12,13 @@ export const Container = styled.div`
     justify-content: space-around;
 `;
 
-export const Label = styled.label`
-    color: gray;
-    margin-right: 10px;
-`;
-
 export const Input = styled.input`
     padding-left: 5px;
+
+    @media (max-width: 412px) {
+        height: 85px;
+        max-width: 320px;
+
+        font-size: 18px;
+    }
 `;

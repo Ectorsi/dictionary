@@ -41,12 +41,21 @@ const Frame = (props: FrameProps) => {
 
     const firstResult = props?.data.filter((_, index) => index === 0);
     const meanings = firstResult.map(mean => mean.meanings);
+    const singleMeaning = meanings.map(item => item?.map(item => item.definitions.map(item => item.definition)));
+    const title = firstResult.map(item => item.word).toString();
+    const phonetic = firstResult.map(item => item.phonetic).toString();
+    const titleCaptalized = title.charAt(0).toUpperCase() + title.slice(1);
     
-    return (
+    return firstResult && (
         <S.Container>
             <>
-                <h1>{firstResult.map(item => item.word)}</h1>
-                <p>{ meanings.map(item => item?.map(item => item.definitions.map(item => item.definition)))}</p>
+                {titleCaptalized && <S.H1>.{titleCaptalized}</S.H1>}
+                { singleMeaning && phonetic && <S.Paragraph>
+                        <S.Phonetic>
+                            {phonetic}
+                        </S.Phonetic>
+                    {singleMeaning}
+                </S.Paragraph>}
             </>
         </S.Container>
     );

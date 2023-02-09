@@ -2,15 +2,13 @@ import { InputHTMLAttributes } from "react";
 import * as S from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    name: string;
-    label: string;
+    placeholder: string;
 }
 
-const InputText = ({name, label, ...rest}: InputProps) => {
+const InputText = ({placeholder, ...rest}: InputProps) => {
     return (
         <S.Container {...rest}>
-            <S.Label htmlFor={name}>{label}</S.Label>
-            <S.Input id={name}/>
+            <S.Input placeholder={placeholder}/>
         </S.Container>
     )
 }

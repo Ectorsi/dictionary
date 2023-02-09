@@ -12,7 +12,7 @@ const Search = ({actionSearch, getEvent}: SearchProps) => {
 
     return (
         <S.Container>
-            <InputText label='Search' name='Search' onChange={e => getEvent(e)}/>
+            <InputText placeholder='Search' onChange={e => getEvent(e)}/>
             <ButtonSearch type="button" onClick={() => actionSearch()}>
                 Buscar
             </ButtonSearch>
