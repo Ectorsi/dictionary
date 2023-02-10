@@ -16,7 +16,7 @@ export const Input = styled.input`
     padding-left: 5px;
 
     @media (max-width: 412px) {
-        height: 85px;
+        height: 30px;
         max-width: 320px;
 
         font-size: 18px;

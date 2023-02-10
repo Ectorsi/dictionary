@@ -42,3 +42,13 @@ export const Phonetic = styled.span`
     font-weight: 500;
     margin-bottom: 5px;
 `;
+
+export const Phonetics = styled.span`
+    background-color: maroon;
+    color: #eee;
+    padding: 2px 4px;
+    border-radius: 2px;
+
+    font-weight: 500;
+    margin-bottom: 5px;
+`;

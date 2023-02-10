@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import AudioComponent from '../Audio';
 import * as S from './styles';
 
 type Antonym = {
@@ -45,18 +47,32 @@ const Frame = (props: FrameProps) => {
     const title = firstResult.map(item => item.word).toString();
     const phonetic = firstResult.map(item => item.phonetic).toString();
     const titleCaptalized = title.charAt(0).toUpperCase() + title.slice(1);
-    
-    return firstResult && (
-        <S.Container>
-            <>
-                {titleCaptalized && <S.H1>.{titleCaptalized}</S.H1>}
-                { singleMeaning && phonetic && <S.Paragraph>
+    const audioForPlay = firstResult.map(item => item.phonetics?.map(audio => audio.audio)).map(us => us && us[1]).toString();
+
+    const renderParagraph = () => {
+        return singleMeaning.length > 0 && (
+            <S.Paragraph>
+                <S.Phonetics>
+                    {phonetic && (
                         <S.Phonetic>
                             {phonetic}
                         </S.Phonetic>
-                    {singleMeaning}
-                </S.Paragraph>}
-            </>
+                    )}
+                        {audioForPlay && <AudioComponent audio={audioForPlay} />}
+                </S.Phonetics>
+                {singleMeaning}
+            </S.Paragraph>
+        )
+    }
+
+    const renderTitle = () => {
+        return titleCaptalized && <S.H1>.{titleCaptalized}</S.H1>
+    }
+    
+    return firstResult && (
+        <S.Container>
+            {renderTitle()}
+            {renderParagraph()}
         </S.Container>
     );
 }
